@@ -1,7 +1,7 @@
 import helper.scapy as scapy
 
 if __name__ == "__main__":
-    network = '192.168.2.9'
+    network = '192.168.92.102'
     cidr= "/24" # /24	255.255.255.0	254
     ip= "%s%s" %(network, cidr)
     scanned_output = scapy.scan(ip)

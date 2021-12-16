@@ -92,32 +92,32 @@ def networkInformation():
     print("="*40, "Network Information", "="*40)
     # get all network interfaces (virtual and physical)
     if_addrs = psutil.net_if_addrs()
-    mac_addr = "None"
-    ip_addr = "None"
-    for interface_name, interface_addresses in if_addrs.items():
-        for address in interface_addresses:
-            if str(interface_name) == "eth0" :
-                if str(address.family) == 'AddressFamily.AF_PACKET':
-                    # print(f"  MAC Address: {address.address}")
-                    mac_addr = str(address.address)
-            if str(interface_name) == "en0" :
-                if str(address.family) == 'AddressFamily.AF_INET':
-                    # print(f"  IP Address: {address.address}")
-                    ip_addr = str(address.address)
-    
-    print("mac_addr, ip_addr", mac_addr, ip_addr)
-
+    # mac_addr = "None"
+    # ip_addr = "None"
     # for interface_name, interface_addresses in if_addrs.items():
     #     for address in interface_addresses:
-    #         print(f"=== Interface: {interface_name} ===")
-    #         if str(address.family) == 'AddressFamily.AF_INET':
-    #             print(f"  IP Address: {address.address}")
-    #             print(f"  Netmask: {address.netmask}")
-    #             print(f"  Broadcast IP: {address.broadcast}")
-    #         elif str(address.family) == 'AddressFamily.AF_PACKET':
-    #             print(f"  MAC Address: {address.address}")
-    #             print(f"  Netmask: {address.netmask}")
-    #             print(f"  Broadcast MAC: {address.broadcast}")
+    #         if str(interface_name) == "eth0" :
+    #             if str(address.family) == 'AddressFamily.AF_PACKET':
+    #                 # print(f"  MAC Address: {address.address}")
+    #                 mac_addr = str(address.address)
+    #         if str(interface_name) == "en0" :
+    #             if str(address.family) == 'AddressFamily.AF_INET':
+    #                 # print(f"  IP Address: {address.address}")
+    #                 ip_addr = str(address.address)
+    
+    # print("mac_addr, ip_addr", mac_addr, ip_addr)
+
+    for interface_name, interface_addresses in if_addrs.items():
+        for address in interface_addresses:
+            print(f"=== Interface: {interface_name} ===")
+            if str(address.family) == 'AddressFamily.AF_INET':
+                print(f"  IP Address: {address.address}")
+                print(f"  Netmask: {address.netmask}")
+                print(f"  Broadcast IP: {address.broadcast}")
+            elif str(address.family) == 'AddressFamily.AF_PACKET':
+                print(f"  MAC Address: {address.address}")
+                print(f"  Netmask: {address.netmask}")
+                print(f"  Broadcast MAC: {address.broadcast}")
 
     # get IO statistics since boot
     # net_io = psutil.net_io_counters()

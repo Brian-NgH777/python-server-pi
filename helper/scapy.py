@@ -1,7 +1,7 @@
 from scapy.all import ARP,Ether,srp
 import urllib.request as req
 import argparse
-import subprocess
+import helper.info_pi as infoHelper
 
 # def get_args():
 #     parser = argparse.ArgumentParser()
@@ -48,11 +48,13 @@ def display_result(result):
         print("{}\t{}\t{}".format(i["ip"], i["mac"], i["vendor"]))
     
 def new():
-    network = subprocess.call(["hostname","-I"])
-    print("networknetworknetwork", network)
-    cidr= "/24" # /24	255.255.255.0	254
-    ip= "%s%s" %(network, cidr)
-    print("ippppppppp", ip)
-    data = scan(ip)
-    display_result(data)
-    return data
+    network = infoHelper.networkInformation()
+    if network == "None" :
+        print("None network")
+    else:
+        cidr= "/24" # /24	255.255.255.0	254
+        ip= "%s%s" %(network, cidr)
+        print("ippppppppp", ip)
+        data = scan(ip)
+        display_result(data)
+        return data

@@ -49,6 +49,7 @@ def display_result(result):
     
 def new():
     network = subprocess.call(["hostname","-I"])
+    print("networknetworknetwork", network)
     cidr= "/24" # /24	255.255.255.0	254
     ip= "%s%s" %(network, cidr)
     print("ippppppppp", ip)

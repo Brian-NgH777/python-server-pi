@@ -12,16 +12,13 @@ def pythoncli():
     pass
 
 @click.command(name='fd')
-@click.option('--url')
-def findDevices(url):
+def findDevices():
     '''
     Find Devices
     '''
     body = scapy.new()
-    host = "http://13.229.69.223:8700"
+    host = "http://localhost:8700"
     path = "/webhook/devices"
-    if len(url) > 0 :
-        host = url
     api = "%s%s"%(host,path)
 
     result = req.Post({}, api, {"data": body})

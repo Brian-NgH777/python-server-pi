@@ -1,12 +1,15 @@
 
 import helper.scapy as scapyHelper
+import helper.info_pi as infoHelper
 import subprocess
 
 if __name__ == "__main__":
-    cmd = "hostname -I"
-    network = subprocess.run(cmd, shell=True)
-    cidr= "/24" # /24	255.255.255.0	254
-    ip= "%s%s" %(network, cidr)
-    print("ippppppppp", ip)
-    data = scapyHelper.scan(ip)
-    scapyHelper.display_result(data)
+    network = infoHelper.networkInformation()
+    if len(network) == 0 :
+        print("Not newwork")
+    else:
+        cidr= "/24" # /24	255.255.255.0	254
+        ip= "%s%s" %(network, cidr)
+        print("ippppppppp", ip)
+        data = scapyHelper.scan(ip)
+        scapyHelper.display_result(data)

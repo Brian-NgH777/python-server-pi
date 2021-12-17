@@ -22,7 +22,7 @@ def findDevices():
     scanned_output = scapy.scan(ip)
     # scapy.display_result(scanned_output)
 
-    result = req.Post({}, 'http://localhost:8700/webhook/devices', {"data": scanned_output})
+    result = req.Post({}, 'http://13.229.69.223:8700/webhook/devices', {"data": scanned_output})
     if result is None or result.status_code != 201:
         click.echo(f'Webhook find devices is false!')
         exit(404)

@@ -104,7 +104,6 @@ def networkInformation():
             #     if str(address.family) == 'AddressFamily.AF_INET':
             #         print(f"  IP Address: {address.address}")
             #         ip_addr = str(address.address)
-    print("ip_addr", ip_addr)
     return ip_addr
     
     # print("mac_addr, ip_addr", mac_addr, ip_addr)

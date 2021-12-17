@@ -5,8 +5,8 @@ import subprocess
 
 if __name__ == "__main__":
     network = infoHelper.networkInformation()
-    if len(network) == 0 :
-        print("Not network")
+    if network == "None" :
+        print("None network")
     else:
         cidr= "/24" # /24	255.255.255.0	254
         ip= "%s%s" %(network, cidr)

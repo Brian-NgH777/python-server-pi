@@ -19,7 +19,7 @@ def findDevices(url):
     '''
     body = scapy.new()
     host = "http://13.229.69.223:8700"
-    path = "/webhook/devices/list"
+    path = "/webhook/devices"
     if len(url) > 0 :
         host = url
     api = "%s%s"%(host,path)
@@ -30,7 +30,6 @@ def findDevices(url):
         exit(404)
     click.echo(f'Done')
 
-
 @click.command(name='ls')
 @click.option('--type', required=True, default="ffmpeg", show_default=True)
 @click.option('--rtsp', required=True)
@@ -40,7 +39,6 @@ def liveStreaming(type, rtsp, rtmp):
     livestreaming
     '''
     streaming.new(type, rtsp, rtmp)
-    click.echo(f'Done')
 
 
 pythoncli.add_command(findDevices)

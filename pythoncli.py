@@ -1,7 +1,7 @@
 import click
-# import subprocess
-import helper.scapy as scapyHelper
+import helper.scapy as scapy
 import helper.request as req
+import helper.streaming as streaming
 
 
 @click.group()
@@ -11,27 +11,35 @@ def pythoncli():
     '''
     pass
 
-@click.command(name='finddevices')
-def findDevices():
+@click.command(name='fd')
+@click.option('--url')
+def findDevices(url):
     '''
     Find Devices
     '''
-    body = scapyHelper.new()
-    print("bodybodybody", body)
-    result = req.Post({}, 'http://13.229.69.223:8700/webhook/devices', {"data": body})
+    body = scapy.new()
+    host = "http://13.229.69.223:8700"
+    path = "/webhook/devices/list"
+    if len(url) > 0 :
+        host = url
+    api = "%s%s"%(host,path)
+
+    result = req.Post({}, api, {"data": body})
     if result is None or result.status_code != 201:
         click.echo(f'Webhook find devices is false!')
         exit(404)
     click.echo(f'Done')
 
 
-@click.command(name='livestreaming')
-@click.argument('url')
-def liveStreaming(url):
+@click.command(name='ls')
+@click.option('--type', required=True, default="ffmpeg", show_default=True)
+@click.option('--rtsp', required=True)
+@click.option('--rtmp', required=True)
+def liveStreaming(type, rtsp, rtmp):
     '''
     livestreaming
     '''
-    print(url)
+    streaming.new(type, rtsp, rtmp)
     click.echo(f'Done')
 
 

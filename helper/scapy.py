@@ -1,6 +1,7 @@
 from scapy.all import ARP,Ether,srp
 import urllib.request as req
 import argparse
+import subprocess
 
 # def get_args():
 #     parser = argparse.ArgumentParser()
@@ -41,9 +42,16 @@ def resolveMac(mac):
     except:
         return "N/A"
   
-# def display_result(result):
-#     print("-----------------------------------\nIP Address\tMAC Address\tVendor\n-----------------------------------")
-#     for i in result:
-#         print("{}\t{}\t{}".format(i["ip"], i["mac"], i["vendor"]))
+def display_result(result):
+    print("-----------------------------------\nIP Address\tMAC Address\tVendor\n-----------------------------------")
+    for i in result:
+        print("{}\t{}\t{}".format(i["ip"], i["mac"], i["vendor"]))
     
-
+def new():
+    network = subprocess.call(["hostname","-I"])
+    cidr= "/24" # /24	255.255.255.0	254
+    ip= "%s%s" %(network, cidr)
+    print("ippppppppp", ip)
+    data = scan(ip)
+    display_result(data)
+    return data

@@ -1,6 +1,6 @@
 import click
-import subprocess
-import helper.scapy as scapy
+# import subprocess
+import helper.scapy as scapyHelper
 import helper.request as req
 
 
@@ -16,13 +16,9 @@ def findDevices():
     '''
     Find Devices
     '''
-    network = subprocess.call(["hostname","-I"])
-    cidr= "/24" # /24	255.255.255.0	254
-    ip= "%s%s" %(network, cidr)
-    subprocess.call(["sudo","su -"])
-    scanned_output = scapy.scan(ip)
-    # scapy.display_result(scanned_output)
-    result = req.Post({}, 'http://13.229.69.223:8700/webhook/devices', {"data": scanned_output})
+    body = scapyHelper.new()
+    print("bodybodybody", body)
+    result = req.Post({}, 'http://13.229.69.223:8700/webhook/devices', {"data": body})
     if result is None or result.status_code != 201:
         click.echo(f'Webhook find devices is false!')
         exit(404)

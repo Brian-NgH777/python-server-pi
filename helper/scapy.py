@@ -1,4 +1,4 @@
-import scapy.all as scapy
+from scapy import *
 import urllib.request as req
 import argparse
 

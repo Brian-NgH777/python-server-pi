@@ -16,13 +16,13 @@ def findDevices():
     '''
     Find Devices
     '''
+    subprocess.call(["sudo","su-"])
     network = subprocess.call(["hostname","-I"])
     cidr= "/24" # /24	255.255.255.0	254
     ip= "%s%s" %(network, cidr)
 
     scanned_output = scapy.scan(ip)
     # scapy.display_result(scanned_output)
-    subprocess.call(["sudo","su-"])
     result = req.Post({}, 'http://13.229.69.223:8700/webhook/devices', {"data": scanned_output})
     if result is None or result.status_code != 201:
         click.echo(f'Webhook find devices is false!')

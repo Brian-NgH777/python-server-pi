@@ -41,9 +41,9 @@ def resolveMac(mac):
     except:
         return "N/A"
   
-def display_result(result):
-    print("-----------------------------------\nIP Address\tMAC Address\\tVendor\n-----------------------------------")
-    for i in result:
-        print("{}\t{}\t{}".format(i["ip"], i["mac"], resolveMac(i["mac"])))
-  
+# def display_result(result):
+#     print("-----------------------------------\nIP Address\tMAC Address\tVendor\n-----------------------------------")
+#     for i in result:
+#         print("{}\t{}\t{}".format(i["ip"], i["mac"], i["vendor"]))
+    
 

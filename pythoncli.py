@@ -17,7 +17,7 @@ def findDevices():
     Find Devices
     '''
     body = scapy.new()
-    host = "http://localhost:8700"
+    host = "http://13.229.69.223:8700"
     path = "/webhook/devices"
     api = "%s%s"%(host,path)
 

@@ -1,9 +1,13 @@
 import click
 import helper.scapy as scapy
-import helper.nmap as nmap
+# import helper.nmap as nmap
 import helper.request as req
+import helper.snapshot as snapshot
 import helper.streaming as streaming
+from pathlib import Path
 
+mypath = Path().absolute()
+host = "http://13.229.69.223:8700"
 
 @click.group()
 def pythoncli():
@@ -12,13 +16,12 @@ def pythoncli():
     '''
     pass
 
-@click.command(name='fd')
+@click.command(name='fd') # Find device 
 def findDevices():
     '''
-    Find Devices used lib scapy
+    Find Devices
     '''
     body = scapy.new()
-    host = "http://13.229.69.223:8700"
     path = "/webhook/devices"
     api = "%s%s"%(host,path)
 
@@ -28,23 +31,35 @@ def findDevices():
         exit(404)
     click.echo(f'Done')
 
-@click.command(name='fd2')
-def findDevices2():
-    '''
-    Find Devices2 nmap
-    '''
-    body = nmap.new()
-    click.echo(f'Done')
-
 @click.command(name='ls')
-@click.option('--type', required=True, default="ffmpeg", show_default=True)
 @click.option('--rtsp', required=True)
 @click.option('--rtmp', required=True)
-def liveStreaming(type, rtsp, rtmp):
+def liveStreaming(rtsp, rtmp):
     '''
-    livestreaming
+    Live streaming ffmpeg
     '''
-    streaming.new(type, rtsp, rtmp)
+    streaming.new(rtsp, rtmp)
+
+@click.command(name='ss')
+@click.option('--rtsp', required=True)
+@click.option('--name', required=True)
+def screenshots(rtsp, name):
+    '''
+    Get JPEG snapshot from RTSP-stream (ffmpeg)
+    '''
+    path = mypath + "/snapshots/"+ name
+    isSuccess = snapshot.new(rtsp, path)
+    if isSuccess == False :
+        click.echo(f'Webhook find devices is false!')
+        exit(404)
+
+    # whPath = "/webhook/snapshots"
+    # api = "%s%s"%(host,whPath)
+    # result = req.PostFile(api, path)
+    # if result is None or result.status_code != 201:
+    #     click.echo(f'Webhook find devices is false!')
+    #     exit(404)
+    click.echo(f'Done')
 
 @click.command(name='ping')
 def ping():
@@ -54,7 +69,7 @@ def ping():
     click.echo(f'Ping Pong Pong')
 
 pythoncli.add_command(findDevices)
-pythoncli.add_command(findDevices2)
 pythoncli.add_command(liveStreaming)
+pythoncli.add_command(screenshots)
 pythoncli.add_command(ping)
    

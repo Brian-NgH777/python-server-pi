@@ -45,10 +45,10 @@ def liveStreaming(rtsp, rtmp):
     Live streaming ffmpeg
     '''
     # Check ip in listLocalDevices
-    isCheck = checkIp(rtsp)
-    if isCheck == False :
-        click.echo(f'IP not in list devices!')
-        exit(404)
+    # isCheck = checkIp(rtsp)
+    # if isCheck == False :
+    #     click.echo(f'IP not in list devices!')
+    #     exit(404)
     # Live streaming thread
     streaming.new(rtsp, rtmp)
 
@@ -60,10 +60,10 @@ def screenshots(rtsp, namefile):
     Get JPEG snapshot from RTSP-stream (ffmpeg)
     '''
     # Check ip in listLocalDevices
-    isCheck = checkIp(rtsp)
-    if isCheck == False :
-        click.echo(f'IP not in list devices!')
-        exit(404)
+    # isCheck = checkIp(rtsp)
+    # if isCheck == False :
+    #     click.echo(f'IP not in list devices!')
+    #     exit(404)
     # screenshots
     path = str(mypath) + "/snapshots/"+ namefile
     isSuccess = snapshot.new(rtsp, path)

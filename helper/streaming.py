@@ -8,8 +8,7 @@ cmd2 = "ffmpeg -fflags nobuffer -rtsp_transport tcp -i %s -framerate 20 -video_s
 def thread_function(rtsp, rtmp):
     try:
         r = cmd2%(rtsp, rtmp)
-        print("cmd", r)
-        subprocess.check_output(r, shell=False).decode("utf-8")
+        subprocess.check_output(r, shell=True).decode("utf-8")
         return True
     except subprocess.CalledProcessError as e:
         print(e.output)
@@ -17,5 +16,5 @@ def thread_function(rtsp, rtmp):
    
 def new(rtsp, rtmp):
     x = threading.Thread(target=thread_function, args=(rtsp, rtmp))
-    # x.daemon = True
+    x.daemon = True
     x.start()

@@ -20,7 +20,7 @@ def thread_function(rtsp, rtmp):
     #      print(e.output)
    
 def new(rtsp, rtmp):
-    thread_function(rtsp, rtmp)
-    #  x = threading.Thread(target=thread_function, args=(rtsp, rtmp))
+    # thread_function(rtsp, rtmp)
+    x = threading.Thread(target=thread_function, args=(rtsp, rtmp))
     # x.daemon = True
-    # x.start()
+    x.start()

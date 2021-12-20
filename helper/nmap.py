@@ -4,7 +4,7 @@ import helper.info_pi as infoHelper
 
 def scan(ip):
     nm = nmap.PortScanner()
-    nm.scan(hosts=ip, arguments='-sP -PR')
+    nm.scan(hosts=ip, arguments='-sP') #  -PR
 
     lHosts=[]
     for ip in nm.all_hosts():

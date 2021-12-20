@@ -50,10 +50,7 @@ def liveStreaming(rtsp, rtmp):
     #     click.echo(f'IP not in list devices!')
     #     exit(404)
     # Live streaming thread
-    isSuccess = streaming.new(rtsp, rtmp)
-    if isSuccess == False :
-        click.echo(f'streaming is false!')
-        exit(404)
+    streaming.new(rtsp, rtmp)
     click.echo(f'Done')
 
 @click.command(name='ss')

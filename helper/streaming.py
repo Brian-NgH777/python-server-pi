@@ -9,7 +9,7 @@ def thread_function(rtsp, rtmp):
     try:
         r = cmd2%(rtsp, rtmp)
         print("cmd", r)
-        subprocess.check_output(r, shell=True).decode("utf-8")
+        subprocess.check_output(r, shell=False).decode("utf-8")
         return True
     except subprocess.CalledProcessError as e:
         print(e.output)

@@ -1,22 +1,7 @@
 import sys
 from scapy.all import ARP,Ether,srp
 import urllib.request as req
-import argparse
 import helper.info_pi as infoHelper
-import subprocess
-
-# def get_args():
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument('-t', '--target', dest='target', help='Target IP Address/Adresses')
-#     options = parser.parse_args()
-
-#     #Check for errors i.e if the user does not specify the target IP Address
-#     #Quit the program if the argument is missing
-#     #While quitting also display an error message
-#     if not options.target:
-#         #Code to handle if interface is not specified
-#         parser.error("[-] Please specify an IP Address or Addresses, use --help for more info.")
-#     return options
   
 def scan(ip):
     arp_req_frame = ARP(pdst = ip)
@@ -30,6 +15,7 @@ def scan(ip):
         client_dict = {"ip" : answered_list[i][1].psrc, "mac" : answered_list[i][1].hwsrc, "vendor": resolveMac(answered_list[i][1].hwsrc)}
         result.append(client_dict)
 
+    result.append({"ip" : "127.0.0.1", "mac" : "mac", "vendor": "brian"})
     return result
 
 def resolveMac(mac):
@@ -55,7 +41,6 @@ def new():
         print("None network")
         sys.exit(0)
     else:
-        # change permission Root not pi 
         # Scaner
         cidr= "/24" # /24	255.255.255.0	254
         ip= "%s%s" %(network, cidr)

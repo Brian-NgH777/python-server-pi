@@ -47,7 +47,7 @@ def screenshots(rtsp, name):
     '''
     Get JPEG snapshot from RTSP-stream (ffmpeg)
     '''
-    path = mypath + "/snapshots/"+ name
+    path = str(mypath) + "/snapshots/"+ name
     print("pathpath", path)
     isSuccess = snapshot.new(rtsp, path)
     print("isSuccessisSuccess", isSuccess)

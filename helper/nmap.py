@@ -2,7 +2,7 @@ import sys, nmap
 import urllib.request as req
 import helper.info_pi as infoHelper
 
- def scan(ip):
+def scan(ip):
     nm = nmap.PortScanner()
     nm.scan(hosts=ip, arguments='-sP -PR') #  -PR
 

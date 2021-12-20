@@ -12,7 +12,7 @@ def thread_function(thead):
         os.system(cmd1)
     elif thead == 1 :
         # Popen(cmd2, shell=True, stdout=DEVNULL)
-        os.system(cmd12)
+        os.system(cmd2)
     # elif thead == 2 :
     #     subprocess.check_output(cmd3, shell=True).decode("utf-8")
     else:

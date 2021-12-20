@@ -20,7 +20,7 @@ def thread_function(thead):
     
 if __name__ == "__main__":
     for index in range(2):
-        x = threading.Thread(target=thread_function, args=(index,))
+        x = threading.Thread(target=thread_function, args=(index,), daemon=True)
         # x.daemon = True               
         x.start()
     

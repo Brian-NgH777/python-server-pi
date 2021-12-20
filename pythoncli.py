@@ -42,13 +42,14 @@ def liveStreaming(rtsp, rtmp):
 
 @click.command(name='ss')
 @click.option('--rtsp', required=True)
-@click.option('--name', required=True)
-def screenshots(rtsp, name):
+@click.option('--namefile', required=True)
+def screenshots(rtsp, namefile):
     '''
     Get JPEG snapshot from RTSP-stream (ffmpeg)
     '''
-    path = str(mypath) + "/snapshots/"+ name
+    path = str(mypath) + "/snapshots/"+ namefile
     print("pathpath", path)
+
     isSuccess = snapshot.new(rtsp, path)
     print("isSuccessisSuccess", isSuccess)
     if isSuccess == False :

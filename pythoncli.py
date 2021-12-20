@@ -51,7 +51,7 @@ def liveStreaming(rtsp, rtmp):
     #     exit(404)
     # Live streaming thread
     streaming.new(rtsp, rtmp)
-    click.echo(f'Done')
+    # click.echo(f'Done')
 
 @click.command(name='ss')
 @click.option('--rtsp', required=True)

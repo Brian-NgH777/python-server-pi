@@ -7,9 +7,9 @@ cmd2 = "ffmpeg -fflags nobuffer -rtsp_transport tcp -i rtsp://admin:Viact123@192
 
 def thread_function(thead):
     if thead == 0 :
-        Popen(cmd1, shell=False, stdout=DEVNULL)
+        Popen(cmd1, shell=True, stdout=DEVNULL)
     elif thead == 1 :
-        Popen(cmd2, shell=False, stdout=DEVNULL)
+        Popen(cmd2, shell=True, stdout=DEVNULL)
     # elif thead == 2 :
     #     subprocess.check_output(cmd3, shell=True).decode("utf-8")
     else:

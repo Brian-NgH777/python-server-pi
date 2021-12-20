@@ -6,7 +6,6 @@ import threading
 # count = 2
 
 def thread_function(thead):
-    # logging.info("Thread %s:", thead)
     # if thead == 0 :
     #     subprocess.check_output(cmd1, shell=True).decode("utf-8")
     # elif thead == 1 :
@@ -16,12 +15,11 @@ def thread_function(thead):
     # else:
     #     logging.info("Main    :Not yet")
     # subprocess.check_output("cmd1", shell=True).decode("utf-8")
-    while True:
-        print(thead)
+    print(thead)
     
 if __name__ == "__main__":
     for index in range(4):
         x = threading.Thread(target=thread_function, args=(index,))
-        x.daemon = True               
+        # x.daemon = True               
         x.start()
     

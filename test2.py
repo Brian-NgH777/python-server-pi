@@ -7,9 +7,9 @@ cmd2 = "ffmpeg -fflags nobuffer -rtsp_transport tcp -i rtsp://admin:Viact123@192
 
 def thread_function(thead):
     if thead == 0 :
-        subprocess.check_output(cmd1, shell=True).decode("utf-8")
+        subprocess.call(cmd1, shell=True)
     elif thead == 1 :
-        subprocess.check_output(cmd2, shell=True).decode("utf-8")
+        subprocess.call(cmd2, shell=True)
     # elif thead == 2 :
     #     subprocess.check_output(cmd3, shell=True).decode("utf-8")
     else:
@@ -20,7 +20,6 @@ def thread_function(thead):
     
 if __name__ == "__main__":
     for index in range(2):
-        x = threading.Thread(target=thread_function, args=(index,), daemon=True)
-        # x.daemon = True               
+        x = threading.Thread(target=thread_function, args=(index,))
         x.start()
     

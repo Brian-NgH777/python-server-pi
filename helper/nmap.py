@@ -2,12 +2,13 @@ import sys, nmap
 import urllib.request as req
 import helper.info_pi as infoHelper
 
-def scan(ip):
+ def scan(ip):
     nm = nmap.PortScanner()
-    nm.scan(hosts=ip, arguments='-sP') #  -PR
+    nm.scan(hosts=ip, arguments='-sP -PR') #  -PR
 
     lHosts=[]
     for ip in nm.all_hosts():
+        print("all_hostsall_hostsall_hosts", ip)
         host = nm[ip]
         mac = "-"
         vendorName = "-"

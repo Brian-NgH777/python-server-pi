@@ -25,7 +25,8 @@ def thread_function(thead):
     print(thead)
     
 if __name__ == "__main__":
-    for index in range(2):
-        x = threading.Thread(target=thread_function, args=(index,))
-        x.start()
+    subprocess.Popen(cmd1, stderr = subprocess.STDOUT, stdout = subprocess.PIPE)
+    # for index in range(2):
+    #     x = threading.Thread(target=thread_function, args=(index,))
+    #     x.start()
     

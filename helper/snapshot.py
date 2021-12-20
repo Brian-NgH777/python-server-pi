@@ -1,6 +1,6 @@
 import subprocess
 
-cmd = "ffmpeg -i %s -vframes 1 %s"
+cmd = "ffmpeg -i %s -vframes 1 %s" # ffmpeg -i rtsp://admin:Viact123@192.168.92.110:554/live -vframes 1 image.jpg
 
 def snapshot(rtsp, path):
     try:

@@ -48,7 +48,9 @@ def screenshots(rtsp, name):
     Get JPEG snapshot from RTSP-stream (ffmpeg)
     '''
     path = mypath + "/snapshots/"+ name
+    print("pathpath", path)
     isSuccess = snapshot.new(rtsp, path)
+    print("isSuccessisSuccess", isSuccess)
     if isSuccess == False :
         click.echo(f'Webhook find devices is false!')
         exit(404)

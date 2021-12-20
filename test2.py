@@ -1,5 +1,5 @@
 import threading
-import subprocess
+from subprocess import DEVNULL, STDOUT, Popen
 
 cmd1 = "ffmpeg -fflags nobuffer -rtsp_transport tcp -i rtsp://admin:Viact123@192.168.92.111/live -framerate 20 -video_size 400x400 -vcodec libx264 -preset veryfast -maxrate 1984k -bufsize 3968k -vf \"format=yuv420p\" -g 60 -c:a aac -b:a 128k -ar 44100 -f flv rtmp://54.254.0.41/live/test1"
 cmd2 = "ffmpeg -fflags nobuffer -rtsp_transport tcp -i rtsp://admin:Viact123@192.168.92.111/live -framerate 20 -video_size 400x400 -vcodec libx264 -preset veryfast -maxrate 1984k -bufsize 3968k -vf \"format=yuv420p\" -g 60 -c:a aac -b:a 128k -ar 44100 -f flv rtmp://54.254.0.41/live/test2"
@@ -7,9 +7,9 @@ cmd2 = "ffmpeg -fflags nobuffer -rtsp_transport tcp -i rtsp://admin:Viact123@192
 
 def thread_function(thead):
     if thead == 0 :
-        subprocess.call(cmd1, shell=True)
+        Popen(cmd1, shell=False, stdout=DEVNULL)
     elif thead == 1 :
-        subprocess.call(cmd2, shell=True)
+        Popen(cmd2, shell=False, stdout=DEVNULL)
     # elif thead == 2 :
     #     subprocess.check_output(cmd3, shell=True).decode("utf-8")
     else:

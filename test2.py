@@ -10,13 +10,13 @@ def thread_function(thead):
     if thead == 0 :
         #Popen(cmd1, shell=True, stdout=DEVNULL)
         # os.system()
-        subprocess.call(cmd1, 
+        subprocess.run(cmd1, 
             stdout=subprocess.DEVNULL, 
             stderr=subprocess.STDOUT)
     elif thead == 1 :
         # Popen(cmd2, shell=True, stdout=DEVNULL)
         #  os.spawnl(os.P_DETACH, cmd2)
-        subprocess.call(cmd2, 
+        subprocess.run(cmd2, 
             stdout=subprocess.DEVNULL, 
             stderr=subprocess.STDOUT)
         # os.system(cmd2)

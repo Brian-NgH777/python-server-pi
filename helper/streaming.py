@@ -8,10 +8,10 @@ cmd2 = "ffmpeg -fflags nobuffer -rtsp_transport tcp -i %s -framerate 20 -video_s
 
 def thread_function(rtsp, rtmp):
     # try:
-        # r = cmd2%(rtsp, rtmp)
-        # subprocess.Popen(r, shell=True)
+    r = cmd2%(rtsp, rtmp)
+    # process = subprocess.Popen(r, shell=True)
 
-    process = subprocess.Popen(cmd2, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    process = subprocess.Popen(r, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     my_pid, err = process.communicate()
     if len(my_pid.splitlines()) >0:
         print("Script Running in background")
@@ -20,7 +20,7 @@ def thread_function(rtsp, rtmp):
     #      print(e.output)
    
 def new(rtsp, rtmp):
-    # thread_function(rtsp, rtmp)
-    x = threading.Thread(target=thread_function, args=(rtsp, rtmp))
+    thread_function(rtsp, rtmp)
+    # x = threading.Thread(target=thread_function, args=(rtsp, rtmp))
     # x.daemon = True
-    x.start()
+    # x.start()

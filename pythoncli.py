@@ -50,7 +50,11 @@ def liveStreaming(rtsp, rtmp):
     #     click.echo(f'IP not in list devices!')
     #     exit(404)
     # Live streaming thread
-    streaming.new(rtsp, rtmp)
+    isSuccess = streaming.new(rtsp, rtmp)
+    if isSuccess == False :
+        click.echo(f'streaming is false!')
+        exit(404)
+    click.echo(f'Done')
 
 @click.command(name='ss')
 @click.option('--rtsp', required=True)
@@ -68,7 +72,7 @@ def screenshots(rtsp, namefile):
     path = str(mypath) + "/snapshots/"+ namefile
     isSuccess = snapshot.new(rtsp, path)
     if isSuccess == False :
-        click.echo(f'Webhook find devices is false!')
+        click.echo(f'snapshot is false!')
         exit(404)
 
     # Webhook go server upload to s3 

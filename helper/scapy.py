@@ -3,6 +3,7 @@ from scapy.all import ARP,Ether,srp
 import urllib.request as req
 import argparse
 import helper.info_pi as infoHelper
+import subprocess
 
 # def get_args():
 #     parser = argparse.ArgumentParser()
@@ -47,13 +48,20 @@ def display_result(result):
     print("-----------------------------------\nIP Address\tMAC Address\tVendor\n-----------------------------------")
     for i in result:
         print("{}\t{}\t{}".format(i["ip"], i["mac"], i["vendor"]))
-    
+
+def permissionRoot():
+    subprocess.check_output("sudo su -", shell=True).decode("utf-8")
+
+
 def new():
     network = infoHelper.networkInformation()
     if network == "None" :
         print("None network")
         sys.exit(0)
     else:
+        # change permission Root not pi 
+        permissionRoot()
+        # Scaner
         cidr= "/24" # /24	255.255.255.0	254
         ip= "%s%s" %(network, cidr)
         print("ippppppppp", ip)

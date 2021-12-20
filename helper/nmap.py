@@ -8,10 +8,10 @@ def scan(ip):
 
     lHosts=[]
     for ip in nm.all_hosts():
-        print("all_hostsall_hostsall_hosts", ip)
         host = nm[ip]
         mac = "-"
         vendorName = "-"
+        print("all_hostsall_hostsall_hosts", host)
         if 'mac' in host['addresses']:
             mac = host['addresses']['mac']
             if mac in host['vendor']:

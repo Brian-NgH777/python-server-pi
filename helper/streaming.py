@@ -17,5 +17,5 @@ def thread_function(rtsp, rtmp):
    
 def new(rtsp, rtmp):
     x = threading.Thread(target=thread_function, args=(rtsp, rtmp))
-    x.daemon = True
+    # x.daemon = True
     x.start()

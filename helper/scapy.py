@@ -1,3 +1,4 @@
+import sys
 from scapy.all import ARP,Ether,srp
 import urllib.request as req
 import argparse
@@ -51,6 +52,7 @@ def new():
     network = infoHelper.networkInformation()
     if network == "None" :
         print("None network")
+        sys.exit(0)
     else:
         cidr= "/24" # /24	255.255.255.0	254
         ip= "%s%s" %(network, cidr)

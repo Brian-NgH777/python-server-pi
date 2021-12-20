@@ -7,9 +7,12 @@ cmd = "ffmpeg -fflags nobuffer -rtsp_transport tcp -i %s -framerate 20 -video_si
 
 def thread_function(type, rtsp, rtmp):
     r = cmd%(rtsp, rtmp)
-    subprocess.check_output(r, shell=True).decode("utf-8")
+    print("rrrrrrr", r)
+    # subprocess.check_output(r, shell=True).decode("utf-8")
    
 def new(type, rtsp, rtmp):
-    x = threading.Thread(target=thread_function, args=(type, rtsp, rtmp))
-    x.daemon = True
-    x.start()
+    r = cmd%(rtsp, rtmp)
+    print("rrrrrrr", r)
+    # x = threading.Thread(target=thread_function, args=(type, rtsp, rtmp))
+    # x.daemon = True
+    # x.start()

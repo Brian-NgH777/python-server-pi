@@ -49,9 +49,10 @@ def liveStreaming(rtsp, rtmp):
     # if isCheck == False :
     #     click.echo(f'IP not in list devices!')
     #     exit(404)
+    
     # Live streaming thread
     streaming.new(rtsp, rtmp)
-    # click.echo(f'Done')
+    click.echo(f'Done')
 
 @click.command(name='ss')
 @click.option('--rtsp', required=True)

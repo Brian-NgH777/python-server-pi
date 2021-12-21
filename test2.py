@@ -10,11 +10,11 @@ def thread_function(thead):
     if thead == 0 :
         #Popen(cmd1, shell=True, stdout=DEVNULL)
         # os.system()
-        subprocess.Popen(cmd1, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,universal_newlines=True)
+        subprocess.Popen(cmd1, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True, shell=True)
     elif thead == 1 :
         # Popen(cmd2, shell=True, stdout=DEVNULL)
         #  os.spawnl(os.P_DETACH, cmd2)
-        subprocess.Popen(cmd2, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,universal_newlines=True)
+        subprocess.Popen(cmd2, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True, shell=True)
         # os.system(cmd2)
     # elif thead == 2 :
     #     subprocess.check_output(cmd3, shell=True).decode("utf-8")

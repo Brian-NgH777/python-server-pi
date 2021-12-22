@@ -41,10 +41,9 @@ def PostFile(url="", path=""):
         return 
     # try:
     files = {'file': open(path, 'rb')}
+    headers = {'Content-type': 'multipart/form-data'}
     # time.sleep(0.01)
-    r = requests.post({
-            'Content-Type': 'multipart/form-data',
-        }, url, files=files)
+    r = requests.post(url, files=files, headers=headers)
         # r.raise_for_status()
     # except HTTPError as http_err:
     #     print(f'HTTP error occurred: {http_err}')

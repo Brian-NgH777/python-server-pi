@@ -1,13 +1,14 @@
 import requests
-# import time
+import time
 from requests.exceptions import HTTPError
 from requests.auth import HTTPBasicAuth
 from requests.auth import HTTPDigestAuth
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
-
+requests.adapters.DEFAULT_RETRIES = 5
 session = requests.Session()
+session.keep_alive = False
 retry = Retry(connect=3, backoff_factor=0.5)
 adapter = HTTPAdapter(max_retries=retry)
 session.mount('http://', adapter)
@@ -57,6 +58,10 @@ def PostFile(url="", path=""):
         return 
     except Exception as err:
         print(f'Other error occurred: {err}')
+        print("Let me sleep for 5 seconds")
+        print("ZZzzzz...")
+        time.sleep(5)
+        print("Was a nice sleep, now let me continue...")
         return
 
     return r

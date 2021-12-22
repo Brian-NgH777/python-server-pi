@@ -66,13 +66,13 @@ def screenshots(rtsp, namefile):
     # if isCheck == False :
     #     click.echo(f'IP not in list devices!')
     #     exit(404)
+
     # screenshots
-    print(str(mypath))
     path = str(mypath) + "/snapshots/"+ namefile
-    isSuccess = snapshot.new(rtsp, path)
-    if isSuccess == False :
-        click.echo(f'snapshot is false!')
-        exit(404)
+    # isSuccess = snapshot.new(rtsp, path)
+    # if isSuccess == False :
+    #     click.echo(f'snapshot is false!')
+    #     exit(404)
 
     # Webhook go server upload to s3 
     whPath = "/webhook/snapshots"

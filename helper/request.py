@@ -40,7 +40,7 @@ def PostFile(url="", path=""):
     if len(url) == 0 or len(path) == 0:
         return 
     # try:
-    files = {'file': open(path, 'rb')}
+    files = {'file':  open(path, 'rb')}
     headers = {'Content-type': 'multipart/form-data'}
     # time.sleep(0.01)
     r = requests.post(url, files=files, headers=headers)

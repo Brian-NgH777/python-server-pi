@@ -69,10 +69,10 @@ def screenshots(rtsp, namefile):
 
     # screenshots
     path = str(mypath) + "/snapshots/"+ namefile
-    # isSuccess = snapshot.new(rtsp, path)
-    # if isSuccess == False :
-    #     click.echo(f'snapshot is false!')
-    #     exit(404)
+    isSuccess = snapshot.new(rtsp, path)
+    if isSuccess == False :
+        click.echo(f'snapshot is false!')
+        exit(404)
 
     # Webhook go server upload to s3 
     whPath = "/webhook/snapshots"

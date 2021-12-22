@@ -40,9 +40,9 @@ def PostFile(url="", path=""):
     if len(url) == 0 or len(path) == 0:
         return 
     try:
-        files = {'file':  open(path, 'rb')}
-        headers = {'Content-type': 'multipart/form-data'}
-        r = requests.post(url, files=files, headers=headers)
+        files = {'file': open(path, 'rb')}
+        # headers = {'Content-type': 'multipart/form-data'}
+        r = requests.post(url, files=files)
         r.raise_for_status()
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')

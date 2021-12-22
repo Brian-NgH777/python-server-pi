@@ -58,10 +58,6 @@ def PostFile(url="", path=""):
         return 
     except Exception as err:
         print(f'Other error occurred: {err}')
-        print("Let me sleep for 5 seconds")
-        print("ZZzzzz...")
-        time.sleep(5)
-        print("Was a nice sleep, now let me continue...")
         return
 
     return r

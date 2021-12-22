@@ -2,6 +2,7 @@ import sys
 from scapy.all import ARP,Ether,srp
 import urllib.request as req
 import helper.info_pi as infoHelper
+from random import random
   
 def scan(ip):
     arp_req_frame = ARP(pdst = ip)
@@ -15,7 +16,7 @@ def scan(ip):
         client_dict = {"ip" : answered_list[i][1].psrc, "mac" : answered_list[i][1].hwsrc, "vendor": resolveMac(answered_list[i][1].hwsrc)}
         result.append(client_dict)
 
-    result.append({"ip" : "127.0.0.1", "mac" : "mac", "vendor": "brian"})
+    result.append({"ip" : "127.0.0.1", "mac" : random(), "vendor": "brian"})
     return result
 
 def resolveMac(mac):

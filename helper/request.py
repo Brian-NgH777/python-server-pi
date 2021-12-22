@@ -1,8 +1,16 @@
 import requests
+# import time
 from requests.exceptions import HTTPError
 from requests.auth import HTTPBasicAuth
 from requests.auth import HTTPDigestAuth
-import time
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
+
+session = requests.Session()
+retry = Retry(connect=3, backoff_factor=0.5)
+adapter = HTTPAdapter(max_retries=retry)
+session.mount('http://', adapter)
 
 timeout = 5
 
@@ -42,7 +50,7 @@ def PostFile(url="", path=""):
     try:
         files = {'file': open(path, 'rb')}
         # headers = {'Content-type': 'multipart/form-data'}
-        r = requests.post(url, files=files)
+        r = session.post(url, files=files)
         r.raise_for_status()
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')

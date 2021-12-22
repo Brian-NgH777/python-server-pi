@@ -39,18 +39,17 @@ def Post(headers={}, url="", body={}):
 def PostFile(url="", path=""):
     if len(url) == 0 or len(path) == 0:
         return 
-    # try:
-    files = {'file':  open(path, 'rb')}
-    headers = {'Content-type': 'multipart/form-data'}
-    # time.sleep(0.01)
-    r = requests.post(url, files=files, headers=headers)
-        # r.raise_for_status()
-    # except HTTPError as http_err:
-    #     print(f'HTTP error occurred: {http_err}')
-    #     return 
-    # except Exception as err:
-    #     print(f'Other error occurred: {err}')
-    #     return
+    try:
+        files = {'file':  open(path, 'rb')}
+        headers = {'Content-type': 'multipart/form-data'}
+        r = requests.post(url, files=files, headers=headers)
+        r.raise_for_status()
+    except HTTPError as http_err:
+        print(f'HTTP error occurred: {http_err}')
+        return 
+    except Exception as err:
+        print(f'Other error occurred: {err}')
+        return
 
     return r
 

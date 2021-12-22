@@ -3,8 +3,8 @@ import requests
 from requests.exceptions import HTTPError
 from requests.auth import HTTPBasicAuth
 from requests.auth import HTTPDigestAuth
-# from requests.adapters import HTTPAdapter
-# from requests.packages.urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 
 # requests.adapters.DEFAULT_RETRIES = 5
 # session = requests.Session()
@@ -51,7 +51,13 @@ def PostFile(url="", path=""):
     try:
         files = {'file': open(path, 'rb')}
         # headers = {'Content-type': 'multipart/form-data'}
-        r = requests.post(url, files=files)
+        s = requests.Session()
+        retry = Retry(connect = 5, backoff_factor = 1)
+        adapter = HTTPAdapter(max_retries = retry)
+        s.mount('http://', adapter)
+        s.keep_alive = False
+        
+        r = s.post(url, files=files)
         r.raise_for_status()
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')

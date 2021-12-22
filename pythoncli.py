@@ -83,10 +83,10 @@ def screenshots(rtsp, namefile):
         exit(404)
     
     # Remove file 
-    # if os.path.exists(path):
-    #     os.remove(path)
-    # else:
-    #     click.echo(f'Remove file path: %s is false!'%(path))
+    if os.path.exists(path):
+        os.remove(path)
+    else:
+        click.echo(f'Remove file path: %s is false!'%(path))
 
     click.echo(f'Done')
 

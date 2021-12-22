@@ -15,7 +15,7 @@ def scan(ip):
         client_dict = {"ip" : answered_list[i][1].psrc, "mac" : answered_list[i][1].hwsrc, "vendor": resolveMac(answered_list[i][1].hwsrc)}
         result.append(client_dict)
 
-    # result.append({"ip" : "127.0.0.1", "mac" : "mac", "vendor": "brian"})
+    esult.append({"ip" : "127.0.0.1", "mac" : "mac", "vendor": "brian"})
     return result
 
 def resolveMac(mac):

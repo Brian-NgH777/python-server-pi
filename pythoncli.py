@@ -67,6 +67,7 @@ def screenshots(rtsp, namefile):
     #     click.echo(f'IP not in list devices!')
     #     exit(404)
     # screenshots
+    print(str(mypath))
     path = str(mypath) + "/snapshots/"+ namefile
     isSuccess = snapshot.new(rtsp, path)
     if isSuccess == False :
@@ -82,10 +83,10 @@ def screenshots(rtsp, namefile):
         exit(404)
     
     # Remove file 
-    if os.path.exists(path):
-        os.remove(path)
-    else:
-        click.echo(f'Remove file path: %s is false!'%(path))
+    # if os.path.exists(path):
+    #     os.remove(path)
+    # else:
+    #     click.echo(f'Remove file path: %s is false!'%(path))
 
     click.echo(f'Done')
 

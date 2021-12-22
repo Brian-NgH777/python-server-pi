@@ -2,6 +2,7 @@ import requests
 from requests.exceptions import HTTPError
 from requests.auth import HTTPBasicAuth
 from requests.auth import HTTPDigestAuth
+import time
 
 timeout = 5
 

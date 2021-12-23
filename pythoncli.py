@@ -71,9 +71,9 @@ def screenshots(rtsp, namefile):
     # print("mypathmypathmypathmypath", str(mypath))
     # pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/"+ namefile
     pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/luna.png"
-    isSuccess = snapshot.new(rtsp, pathFile)
-    if isSuccess == False :
-        click.echo(f'snapshot is false!')
+    err = snapshot.new(rtsp, pathFile)
+    if err:
+        click.echo(err)
         exit(404)
 
     # Webhook go server upload to s3 

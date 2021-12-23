@@ -7,7 +7,7 @@ import helper.snapshot as snapshot
 import helper.streaming as streaming
 from pathlib import Path
 
-mypath = Path().absolute()
+# mypath = Path().absolute()
 listLocalDevices = []
 host = "http://13.229.69.223:8700"
 
@@ -68,8 +68,8 @@ def screenshots(rtsp, namefile):
     #     exit(404)
 
     # screenshots
-    print("mypathmypathmypathmypath", str(mypath))
-    path = str(mypath) + "/snapshots/"+ namefile
+    # print("mypathmypathmypathmypath", str(mypath))
+    path = "/home/pi/Desktop/project/python-server-pi" + "/snapshots/"+ namefile
     print("pathpathpathpath", path)
     isSuccess = snapshot.new(rtsp, path)
     if isSuccess == False :

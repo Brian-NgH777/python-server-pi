@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import click
 import helper.scapy as scapy

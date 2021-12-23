@@ -10,13 +10,13 @@ cmd2 = "nohup ffmpeg -fflags nobuffer -rtsp_transport tcp -i %s -framerate 20 -v
 def thread_function(rtsp, rtmp):
     try:
         r = cmd2%(rtsp, rtmp)
-        subprocess.check_output(r, shell=True, )
+        subprocess.Popen(r, shell=True)
     except subprocess.CalledProcessError as e:
         print(e.output)
    
 def new(rtsp, rtmp):
-    r = cmd2%(rtsp, rtmp)
-    os.system(r)
-    # x = threading.Thread(target=thread_function, args=(rtsp, rtmp))
+    # r = cmd2%(rtsp, rtmp)
+    # os.system(r)
+    x = threading.Thread(target=thread_function, args=(rtsp, rtmp))
     #  x.daemon = True
-    # x.start()
+    x.start()

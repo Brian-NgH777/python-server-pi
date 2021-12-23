@@ -51,7 +51,6 @@ def liveStreaming(rtsp, rtmp):
     #     exit(404)
     
     # Live streaming thread
-    print(11111)
     streaming.new(rtsp, rtmp)
     click.echo(f'Done')
 

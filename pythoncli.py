@@ -69,7 +69,8 @@ def screenshots(rtsp, namefile):
 
     # screenshots
     # print("mypathmypathmypathmypath", str(mypath))
-    pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/"+ namefile
+    # pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/"+ namefile
+    pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/luna.png"
     isSuccess = snapshot.new(rtsp, pathFile)
     if isSuccess == False :
         click.echo(f'snapshot is false!')

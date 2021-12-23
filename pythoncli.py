@@ -71,9 +71,11 @@ def screenshots(rtsp, namefile):
     # screenshots
     # print("mypathmypathmypathmypath", str(mypath))
     pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/"+ namefile
+    print("mypathmypathmypathmypath", pathFile)
     err = snapshot.new(rtsp, pathFile)
     if err:
-        click.echo(err)
+        print("errerrerrerr", err)
+        click.echo("snapshot.new is failed", err)
         exit(404)
 
     # Webhook go server upload to s3 

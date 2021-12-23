@@ -70,7 +70,7 @@ def screenshots(rtsp, namefile):
     # screenshots
     # print("mypathmypathmypathmypath", str(mypath))
     # pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/"+ namefile
-    pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/luna.png"
+    pathFile = "/home/pi/Desktop/project/snapshots/luna.png"
     err = snapshot.new(rtsp, pathFile)
     if err:
         click.echo(err)

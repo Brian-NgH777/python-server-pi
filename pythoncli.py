@@ -69,8 +69,8 @@ def screenshots(rtsp, namefile):
 
     # screenshots
     # print("mypathmypathmypathmypath", str(mypath))
-    path = "/home/pi/Desktop/project/python-server-pi/snapshots/"+ namefile
-    isSuccess = snapshot.new(rtsp, path)
+    pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/"+ namefile
+    isSuccess = snapshot.new(rtsp, pathFile)
     if isSuccess == False :
         click.echo(f'snapshot is false!')
         exit(404)
@@ -78,16 +78,16 @@ def screenshots(rtsp, namefile):
     # Webhook go server upload to s3 
     whPath = "/webhook/snapshots"
     api = "%s%s"%(host,whPath)
-    result = req.PostFile(api, path)
+    result = req.PostFile(api, pathFile)
     if result is None or result.status_code != 200:
         click.echo(f'Webhook Post File is false!')
         exit(404)
     
     # Remove file 
-    if os.path.exists(path):
-        os.remove(path)
+    if os.path.exists(pathFile):
+        os.remove(pathFile)
     else:
-        click.echo(f'Remove file path: %s is false!'%(path))
+        click.echo(f'Remove file path: %s is false!'%(pathFile))
 
     click.echo(f'Done')
 

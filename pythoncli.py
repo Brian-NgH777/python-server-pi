@@ -51,6 +51,7 @@ def liveStreaming(rtsp, rtmp):
     #     exit(404)
     
     # Live streaming thread
+    print(11111)
     streaming.new(rtsp, rtmp)
     click.echo(f'Done')
 
@@ -68,7 +69,9 @@ def screenshots(rtsp, namefile):
     #     exit(404)
 
     # screenshots
+    print("mypathmypathmypathmypath", str(mypath))
     path = str(mypath) + "/snapshots/"+ namefile
+    print("pathpathpathpath", path)
     isSuccess = snapshot.new(rtsp, path)
     if isSuccess == False :
         click.echo(f'snapshot is false!')

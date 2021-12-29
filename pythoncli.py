@@ -116,7 +116,7 @@ def checkIp(rtsp):
 def auth(headers = {}):
     api = "http://127.0.0.1:1172"
     result = req.Get({}, api)
-    if result is None or result.status_code != 201:
+    if result is None or result.status_code != 200:
         click.echo(f'Get auth failed!')
         exit(404)
     token = result.json()

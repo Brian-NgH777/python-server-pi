@@ -29,13 +29,16 @@ def findDevices():
     # Add data scan devices to global listLocalDevices
     global listLocalDevices
     listLocalDevices = body
+
+    aa = auth({})
+    print("aaaa", aa)
     # Webhook go server update list devices
-    path = "/webhook/devices"
-    api = "%s%s"%(host,path)
-    result = req.Post({}, api, {"data": body})
-    if result is None or result.status_code != 201:
-        click.echo(f'Webhook find devices is false!')
-        exit(404)
+    # path = "/webhook/devices"
+    # api = "%s%s"%(host,path)
+    # result = req.Post(auth({}), api, {"data": body})
+    # if result is None or result.status_code != 201:
+    #     click.echo(f'Webhook find devices is false!')
+    #     exit(404)
     click.echo(f'Done')
 
 @click.command(name='ls')
@@ -71,7 +74,6 @@ def screenshots(rtsp, namefile):
     # screenshots
     # print("mypathmypathmypathmypath", str(mypath))
     pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/"+ namefile
-    print("mypathmypathmypathmypath", pathFile)
     err = snapshot.new(rtsp, pathFile)
     if err:
         print("errerrerrerr", err)
@@ -81,7 +83,7 @@ def screenshots(rtsp, namefile):
     # Webhook go server upload to s3 
     whPath = "/webhook/snapshots"
     api = "%s%s"%(host,whPath)
-    result = req.PostFile(api, pathFile)
+    result = req.PostFile(auth({}), api, pathFile)
     if result is None or result.status_code != 200:
         click.echo(f'Webhook Post File is false!')
         exit(404)
@@ -110,6 +112,17 @@ def checkIp(rtsp):
             isCheck = True
             break
     return isCheck
+
+def auth(headers = {}):
+    api = "http://127.0.0.1:1172"
+    result = req.Get({}, api)
+    if result is None or result.status_code != 201:
+        click.echo(f'Get auth failed!')
+        exit(404)
+    token = result.json()
+    headers['Authorization'] = token["accessToken"]
+    return headers
+
 
 pythoncli.add_command(findDevices)
 pythoncli.add_command(liveStreaming)

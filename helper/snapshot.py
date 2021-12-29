@@ -4,9 +4,7 @@ cmd = "ffmpeg -i %s -vframes 1 %s" # ffmpeg -i rtsp://admin:Viact123@192.168.92.
 
 def snapshot(rtsp, pathFile):
     try:
-        print("pathFilepathFilepathFilepathFile", pathFile)
         r = cmd%(rtsp, pathFile)
-        print("rrrrrrrr", r)
         subprocess.check_output(r, shell=True)
     except subprocess.CalledProcessError as e:
         return e.output

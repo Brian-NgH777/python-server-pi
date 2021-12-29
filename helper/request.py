@@ -45,7 +45,7 @@ def Post(headers={}, url="", body={}):
 
     return r
 
-def PostFile(url="", path=""):
+def PostFile(headers={}, url="", path=""):
     if len(url) == 0 or len(path) == 0:
         return 
     try:
@@ -56,8 +56,8 @@ def PostFile(url="", path=""):
         adapter = HTTPAdapter(max_retries = retry)
         s.mount('http://', adapter)
         s.keep_alive = False
-        
-        r = s.post(url, files=files)
+
+        r = s.post(url, headers=headers, files=files)
         r.raise_for_status()
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')

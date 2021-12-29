@@ -30,15 +30,13 @@ def findDevices():
     global listLocalDevices
     listLocalDevices = body
 
-    aa = auth({})
-    print("aaaa", aa)
     # Webhook go server update list devices
-    # path = "/webhook/devices"
-    # api = "%s%s"%(host,path)
-    # result = req.Post(auth({}), api, {"data": body})
-    # if result is None or result.status_code != 201:
-    #     click.echo(f'Webhook find devices is false!')
-    #     exit(404)
+    path = "/webhook/devices"
+    api = "%s%s"%(host,path)
+    result = req.Post(auth({}), api, {"data": body})
+    if result is None or result.status_code != 201:
+        click.echo(f'Webhook find devices is false!')
+        exit(404)
     click.echo(f'Done')
 
 @click.command(name='ls')

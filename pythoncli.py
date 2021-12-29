@@ -53,7 +53,15 @@ def liveStreaming(rtsp, rtmp):
     #     exit(404)
     
     # Live streaming thread
-    streaming.new(rtsp, rtmp)
+    streaming.start(rtsp, rtmp)
+    click.echo(f'Done')
+
+@click.command(name='sls')
+def stopStreaming():
+    '''
+    Stop streaming ffmpeg (kill process)
+    '''
+    streaming.stop()
     click.echo(f'Done')
 
 @click.command(name='ss')
@@ -70,7 +78,6 @@ def screenshots(rtsp, namefile):
     #     exit(404)
 
     # screenshots
-    # print("mypathmypathmypathmypath", str(mypath))
     pathFile = "/home/pi/Desktop/project/python-server-pi/snapshots/"+ namefile
     err = snapshot.new(rtsp, pathFile)
     if err:
@@ -124,6 +131,7 @@ def auth(headers = {}):
 
 pythoncli.add_command(findDevices)
 pythoncli.add_command(liveStreaming)
+pythoncli.add_command(stopStreaming)
 pythoncli.add_command(screenshots)
 pythoncli.add_command(ping)
    

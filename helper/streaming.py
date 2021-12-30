@@ -4,7 +4,6 @@ import threading
 import subprocess
 
 cmdStart = "nohup ffmpeg -fflags nobuffer -rtsp_transport tcp -i %s -framerate 20 -video_size 480x320 -vcodec libx264 -preset veryfast -maxrate 1984k -bufsize 3968k -vf \"format=yuv420p\" -g 60 -c:a aac -b:a 128k -ar 44100 -f flv %s &"
-cmdStop = "sudo -E stop_stream.sh"
 
 def thread_function(rtsp, rtmp):
     try:
@@ -20,6 +19,6 @@ def start(rtsp, rtmp):
 
 def stop():
     try:
-        subprocess.check_output(cmdStop, shell=True)
+        subprocess.Popen(['sudo','stop_stream.sh'])
     except subprocess.CalledProcessError as e:
         print("cmdStop", e.output)

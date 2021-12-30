@@ -20,6 +20,6 @@ def start(rtsp, rtmp):
 
 def stop():
     try:
-        subprocess.Popen(cmdStop, shell=True)
+        subprocess.check_output(cmdStop, shell=True)
     except subprocess.CalledProcessError as e:
         print("cmdStop", e.output)

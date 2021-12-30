@@ -19,6 +19,6 @@ def start(rtsp, rtmp):
 
 def stop():
     try:
-        subprocess.Popen(['sudo','stop_stream.sh'])
+        subprocess.call(['sudo','./stop_stream.sh'])
     except subprocess.CalledProcessError as e:
         print("cmdStop", e.output)

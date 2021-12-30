@@ -4,7 +4,7 @@ import threading
 import subprocess
 
 cmdStart = "nohup ffmpeg -fflags nobuffer -rtsp_transport tcp -i %s -framerate 20 -video_size 480x320 -vcodec libx264 -preset veryfast -maxrate 1984k -bufsize 3968k -vf \"format=yuv420p\" -g 60 -c:a aac -b:a 128k -ar 44100 -f flv %s &"
-cmdStop = "ps aux | grep ffmpeg  | awk '{print $2}' | xargs kill -9"
+cmdStop = "sudo ps aux | grep ffmpeg  | awk '{print $2}' | xargs kill -9"
 
 def thread_function(rtsp, rtmp):
     try:

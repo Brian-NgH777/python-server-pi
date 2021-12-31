@@ -3,7 +3,7 @@ import os
 import threading
 import subprocess
 
-cmdStart = "nohup ffmpeg -rtsp_transport tcp -i %s -framerate 20 -s 320x240 -vcodec libx264 -f flv -flvflags no_duration_filesize -an %s >/dev/null 2>&1 &"
+cmdStart = "nohup ffmpeg -rtsp_transport tcp -i %s -framerate 20 -s 320x240 -vcodec libx264 -f flv -flvflags no_duration_filesize -an -movflags +faststart -threads 0 %s >/dev/null 2>&1 &"
 
 def thread_function(rtsp, rtmp):
     try:

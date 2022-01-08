@@ -1,8 +1,8 @@
 import psutil
-# import GPUtil
+import GPUtil
 import platform
 from datetime import datetime
-# from tabulate import tabulate
+from tabulate import tabulate
 
 def get_size(bytes, suffix="B"):
     """

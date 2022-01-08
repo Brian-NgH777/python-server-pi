@@ -127,6 +127,7 @@ def networkInformation():
 def gpuInformation():
     print("="*40, "GPU Details", "="*40)
     gpus = GPUtil.getGPUs()
+    print("gpusgpusgpusgpusgpus", gpus)
     list_gpus = []
     for gpu in gpus:
         # get the GPU id
